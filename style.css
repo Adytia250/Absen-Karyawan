@@ -1,0 +1,430 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', Arial, sans-serif;
+  background: #181818;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background effects, logo, shimmer, spotlight */
+.bg-animated-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, #ff9800 0%, #ffedc4 50%, #ff9800 100%);
+  background-size: 200% 200%;
+  animation: bgmove 10s ease-in-out infinite alternate;
+}
+@keyframes bgmove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.bg-shimmer {
+  position: fixed;
+  left: -100vw;
+  top: 0;
+  width: 300vw;
+  height: 100vh;
+  background: linear-gradient(100deg, transparent 75%, #fffbe544 85%, transparent 95%);
+  opacity: 0.17;
+  pointer-events: none;
+  animation: shimmeranim 6s linear infinite;
+}
+@keyframes shimmeranim {
+  0% { left: -100vw; }
+  100% { left: 0vw; }
+}
+.bg-spotlight {
+  position: fixed;
+  left: 50%;
+  top: 35vh;
+  width: 60vw;
+  height: 50vh;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #fffbe5aa 10%, transparent 65%);
+  filter: blur(18px);
+  opacity: 0.32;
+  pointer-events: none;
+  z-index: 1;
+}
+.bg-logo-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.17;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- JALUR MACAN DI BELAKANG FORM --- */
+.tiger-track {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  width: 100vw;
+  height: 120px;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+/* Shadow tiger effect */
+.tiger-shadow {
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+  width: 100vw;
+  height: 36px;
+  background: radial-gradient(ellipse at 50% 60%, #00000044 0%, transparent 80%);
+  opacity: 0.23;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Macan berjalan benar-benar dari kiri ke kanan */
+.tiger-walk {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 170px;
+  height: 110px;
+  z-index: 2;
+  animation: tigerjalan 14s linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 15px #ff980055);
+}
+.tiger-walk img {
+  width: 100%;
+  height: auto;
+}
+@keyframes tigerjalan {
+  0% {
+    left: -170px;
+    opacity: 0.7;
+    filter: blur(0.5px) drop-shadow(0 6px 12px #ff980055);
+  }
+  8% { opacity: 1; filter: blur(0px) drop-shadow(0 6px 18px #ffa00077);}
+  85% { opacity: 1; }
+  100% {
+    left: 100vw;
+    opacity: 0.7;
+    filter: blur(1px) drop-shadow(0 4px 7px #1112);
+  }
+}
+
+/* Jejak kaki macan - warna tegas dan bentuk tapak */
+.tiger-footprints {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 100vw;
+  height: 42px;
+  z-index: 1;
+  pointer-events: none;
+  background: none;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg width="50" height="40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="34" rx="9" ry="6" fill="%23e08a1e"/><ellipse cx="13" cy="24" rx="5" ry="3.5" fill="%23a65711"/><ellipse cx="37" cy="24" rx="5" ry="3.5" fill="%23a65711"/><ellipse cx="19" cy="15" rx="3" ry="2.5" fill="%230b0b0b"/><ellipse cx="25" cy="12" rx="3" ry="2.5" fill="%230b0b0b"/><ellipse cx="31" cy="15" rx="3" ry="2.5" fill="%230b0b0b"/></svg>');
+  background-repeat: repeat-x;
+  background-size: 56px 40px;
+  animation: footprints-move 14s linear infinite;
+  opacity: 0.84;
+}
+@keyframes footprints-move {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 1120px; }
+}
+
+/* ...lanjutan CSS form absensi, tombol, dll mengikuti sebelumnya... */
+
+/* Kotak utama */
+.absen-container {
+  background: #fffbe5;
+  border-radius: 26px;
+  border: 2.5px solid #ffa000cc;
+  box-shadow: 0 8px 32px #ff980044, 0 1.5px 10px #ff980022;
+  max-width: 430px;
+  margin: 48px auto 0 auto;
+  z-index: 3;
+  position: relative;
+  padding: 38px 18px 34px 18px;
+  text-align: center;
+}
+
+/* HEADER */
+.absen-header {
+  margin-bottom: 1.4em;
+}
+.absen-title {
+  font-family: 'Oswald', 'Impact', Arial, sans-serif;
+  font-size: 2.35em;
+  letter-spacing: 3px;
+  color: #FFA000;
+  text-shadow: 0 2px 13px #fff9, 0 1px 0 #fff;
+  font-weight: 900;
+  margin-bottom: 3px;
+  line-height: 1.1;
+}
+.absen-subtitle {
+  font-family: 'Lato', Arial, sans-serif;
+  color: #1a1917;
+  font-size: 1.18em;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+  text-shadow: 0 1px 6px #fff9;
+}
+
+/* SCAN CAMERA STYLE */
+.scan-camera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.8em;
+}
+.scan-area {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4/3;
+  margin: 0 auto;
+}
+#video {
+  border-radius: 18px;
+  border: 3px solid #FFA000;
+  background: #222;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  box-shadow: 0 3px 18px #FFA00033, 0 2px 8px #3334;
+  z-index: 2;
+  display: block;
+}
+
+/* Kotak scan & animasi */
+.scan-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scan-box {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: 3px solid #FFA000;
+  border-radius: 18px;
+  box-shadow: 0 0 28px #FFA00066, 0 2px 11px #fff6;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(1px) saturate(120%);
+}
+.scan-line {
+  position: absolute;
+  left: 11%;
+  width: 80%;
+  height: 3.5px;
+  background: linear-gradient(90deg, #fffbe5 15%, #FFA000 80%);
+  border-radius: 3px;
+  animation: scanmove 2.3s linear infinite;
+  opacity: 0.8;
+}
+@keyframes scanmove {
+  0%   { top: 14%; }
+  100% { top: 74%; }
+}
+
+/* FORM DAN TOMBOL */
+.btn-group {
+  margin: 19px 0 13px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+button {
+  background: linear-gradient(90deg, #FFA000 70%, #FF3D00 100%);
+  color: #fff;
+  border: none;
+  border-radius: 13px;
+  padding: 13px 0;
+  font-size: 1.09em;
+  font-weight: 700;
+  letter-spacing: .8px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px #FFA00022;
+  transition: background 0.18s, transform 0.11s;
+  outline: none;
+  border-bottom: 3px solid #FF3D00;
+  border-top: 2px solid #fffbe5;
+  min-width: 160px;
+  flex: 1 1 45%;
+  max-width: 220px;
+}
+button:hover:enabled {
+  background: linear-gradient(90deg, #FF3D00 40%, #FFA000 100%);
+  transform: translateY(-2px) scale(1.06) rotate(-1deg);
+  box-shadow: 0 7px 13px #FFA00055;
+}
+button:active:enabled {
+  background: #FF3D00;
+  color: #ffd740;
+  transform: scale(1.02);
+}
+button:disabled {
+  background: #eee !important;
+  color: #aaa !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+button.danger {
+  background: linear-gradient(90deg, #f44336 70%, #b71c1c 100%);
+  color: #fffbe5;
+  border-bottom: 3px solid #b71c1c;
+  text-shadow: 0 1px 2px #b71c1c44;
+}
+button.danger:hover:enabled {
+  background: linear-gradient(90deg, #b71c1c 40%, #f44336 100%);
+  color: #ffd740;
+}
+
+#enrollForm {
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: stretch;
+}
+input[type="text"] {
+  padding: 14px 15px;
+  border-radius: 8px;
+  border: 2px solid #FFA00099;
+  font-size: 1.11em;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fffbe5;
+  color: #FF3D00;
+  font-weight: 600;
+  outline: none;
+  transition: border 0.18s;
+  margin: 0 0 10px 0;
+}
+input[type="text"]:focus {
+  border: 2.5px solid #FFA000;
+  background: #fff3e0;
+}
+
+#log, #warning {
+  margin: 12px 0 0 0;
+  color: #d32f2f;
+  font-weight: 700;
+  min-height: 22px;
+  text-shadow: 0 1px 2px #fff;
+}
+#absensiLog, #listWajah {
+  margin-top: 15px;
+  color: #222;
+  font-size: 1.03em;
+  text-align: left;
+  background: rgba(255, 243, 224, 0.97);
+  border-radius: 11px;
+  padding: 12px 14px;
+  max-height: 180px;
+  overflow-y: auto;
+  box-shadow: 0 2px 10px #FFA00011;
+  border-left: 4px solid #FFA000;
+}
+#csvLink {
+  margin-top: 1.5em;
+  font-size: 1.09em;
+  z-index: 9;
+  position: relative;
+}
+#csvLink a {
+  color: #FF3D00;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px dashed #FFA000;
+  background: #fffbe5;
+  padding: 4px 10px;
+  border-radius: 7px;
+  transition: background 0.16s, color 0.16s;
+}
+#csvLink a:hover {
+  background: #FFA000;
+  color: #fffbe5;
+  border-bottom: 2px solid #fffbe5;
+  text-shadow: 0 1px 2px #FF3D0077;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .absen-container {
+    max-width: 99vw;
+    border-radius: 0 0 18px 18px;
+    padding: 8vw 2vw 8vw 2vw;
+    margin: 0;
+  }
+  .absen-title {
+    font-size: 1.38em;
+  }
+  .absen-subtitle {
+    font-size: 1.01em;
+  }
+  .scan-area {
+    max-width: 99vw;
+  }
+  #video {
+    width: 98vw !important;
+    max-width: 99vw !important;
+    min-width: unset;
+    height: auto !important;
+    aspect-ratio: 4/3;
+  }
+  .btn-group {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  button {
+    font-size: 1.12em;
+    padding: 15px 0;
+    width: 99vw;
+    min-width: unset;
+    max-width: 99vw;
+    margin: 0 auto;
+  }
+  input[type="text"] {
+    font-size: 1.12em;
+    padding: 14px 10px;
+  }
+  #absensiLog, #listWajah {
+    font-size: 0.99em;
+    padding: 8px 8px;
+    max-width: 99vw;
+  }
+  .tiger-track {
+    height: 80px;
+  }
+  .tiger-walk {
+    width: 110px;
+    height: 60px;
+  }
+  .tiger-footprints {
+    height: 21px;
+    width: 60vw;
+    background-size: 66px 15px;
+  }
+}

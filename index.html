@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>ABSENSI | Tim Management PT. EDY MACAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css?family=Oswald:700|Lato:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Efek animasi background -->
+  <div class="bg-animated-gradient"></div>
+  <div class="bg-shimmer"></div>
+  <div class="bg-spotlight"></div>
+  <!-- Logo full screen -->
+  <img src="timradar.jpeg" class="bg-logo-full" alt="Logo Macan" />
+
+  <!-- Jalur macan (di belakang form) -->
+ <div class="tiger-track">
+  <div class="tiger-shadow"></div>
+  <div class="tiger-footprints"></div>
+  <div class="tiger-walk">
+    <img src="https://media.tenor.com/Niz8rgg3A-MAAAAi/electric-catnip-catnip.gif" alt="Macan Berjalan" />
+  </div>
+</div>
+
+  <div class="absen-container">
+    <div class="absen-header">
+      <div class="absen-title">ABSENSI</div>
+      <div class="absen-subtitle">Tim Management PT. EDY MACAN</div>
+    </div>
+    <div class="scan-camera">
+      <div class="scan-area">
+  <video id="video" playsinline autoplay muted></video>
+  <canvas id="canvas" width="320" height="240" style="display:none"></canvas>
+  <div class="scan-overlay">
+    <div class="scan-box"></div>
+    <div class="scan-line"></div>
+  </div>
+</div>
+    </div>
+    <div id="warning"></div>
+    <div class="btn-group">
+      <button id="btnEnroll">Daftarkan Wajah Anda</button>
+      <button id="btnAbsenMasuk">Absen Masuk</button>
+      <button id="btnAbsenPulang">Absen Pulang</button>
+      <button id="btnLihatDaftarWajah">Lihat Daftar Wajah</button>
+      <button id="btnHapusDaftarWajah" class="danger">Hapus Daftar Wajah</button>
+    </div>
+    <form id="enrollForm" style="display:none;">
+      <input type="text" id="namaKaryawan" placeholder="Nama / No KTA" autocomplete="off">
+      <button type="button" id="btnAmbilWajah">Ambil Foto & Simpan Wajah</button>
+      <button type="button" id="btnBatalEnroll" class="danger">Batal</button>
+    </form>
+    <div id="log"></div>
+    <div id="listWajah"></div>
+    <div id="absensiLog"></div>
+    <div id="csvLink"></div>
+    <button id="btnHapusLog" class="danger" style="margin-top:14px;">Hapus Log Absensi</button>
+  </div>
+</body>
+</html>
